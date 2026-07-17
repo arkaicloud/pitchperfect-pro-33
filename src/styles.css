@@ -4,6 +4,75 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Acessaí presentation brand tokens */
+@theme inline {
+  --color-acessai-bg: var(--acessai-bg);
+  --color-acessai-surface: var(--acessai-surface);
+  --color-acessai-surface-2: var(--acessai-surface-2);
+  --color-acessai-border: var(--acessai-border);
+  --color-acessai-text: var(--acessai-text);
+  --color-acessai-muted: var(--acessai-muted);
+  --color-acessai-cyan: var(--acessai-cyan);
+  --color-acessai-blue: var(--acessai-blue);
+  --color-acessai-purple: var(--acessai-purple);
+}
+
+:root {
+  --acessai-bg: oklch(0.16 0.03 265);
+  --acessai-surface: oklch(0.22 0.04 265);
+  --acessai-surface-2: oklch(0.27 0.05 265);
+  --acessai-border: oklch(1 0 0 / 10%);
+  --acessai-text: oklch(0.98 0.005 250);
+  --acessai-muted: oklch(0.72 0.03 250);
+  --acessai-cyan: oklch(0.82 0.14 210);
+  --acessai-blue: oklch(0.66 0.19 260);
+  --acessai-purple: oklch(0.66 0.2 300);
+}
+
+@utility acessai-gradient-text {
+  background: linear-gradient(90deg, var(--acessai-cyan), var(--acessai-blue) 55%, var(--acessai-purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility acessai-card {
+  background: linear-gradient(180deg, oklch(1 0 0 / 6%), oklch(1 0 0 / 2%));
+  border: 1px solid var(--acessai-border);
+  border-radius: 1.25rem;
+  backdrop-filter: blur(8px);
+}
+
+@utility acessai-glow {
+  box-shadow:
+    0 0 0 1px oklch(1 0 0 / 6%) inset,
+    0 20px 60px -20px oklch(0.66 0.19 260 / 45%);
+}
+
+@keyframes acessai-fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.acessai-slide-enter > * {
+  animation: acessai-fade-up 0.55s ease-out both;
+}
+.acessai-slide-enter > *:nth-child(2) { animation-delay: 0.08s; }
+.acessai-slide-enter > *:nth-child(3) { animation-delay: 0.16s; }
+.acessai-slide-enter > *:nth-child(4) { animation-delay: 0.24s; }
+.acessai-slide-enter > *:nth-child(5) { animation-delay: 0.32s; }
+.acessai-slide-enter > *:nth-child(6) { animation-delay: 0.4s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .acessai-slide-enter > * { animation: none; }
+}
+
+@media print {
+  .acessai-no-print { display: none !important; }
+  .acessai-slide { page-break-after: always; break-after: page; }
+}
+
+
 /*
  * Design system definition.
  *
