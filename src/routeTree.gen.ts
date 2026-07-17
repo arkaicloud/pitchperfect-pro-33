@@ -9,9 +9,15 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ApresentacaoAcessaiRouteImport } from './routes/apresentacao-acessai'
 import { Route as IndexRouteImport } from './routes/index'
 
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApresentacaoAcessaiRoute = ApresentacaoAcessaiRouteImport.update({
   id: '/apresentacao-acessai',
   path: '/apresentacao-acessai',
@@ -26,31 +32,42 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/apresentacao-acessai': typeof ApresentacaoAcessaiRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/apresentacao-acessai': typeof ApresentacaoAcessaiRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/apresentacao-acessai': typeof ApresentacaoAcessaiRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/apresentacao-acessai'
+  fullPaths: '/' | '/apresentacao-acessai' | '/sitemap.xml'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/apresentacao-acessai'
-  id: '__root__' | '/' | '/apresentacao-acessai'
+  to: '/' | '/apresentacao-acessai' | '/sitemap.xml'
+  id: '__root__' | '/' | '/apresentacao-acessai' | '/sitemap.xml'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ApresentacaoAcessaiRoute: typeof ApresentacaoAcessaiRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/apresentacao-acessai': {
       id: '/apresentacao-acessai'
       path: '/apresentacao-acessai'
@@ -71,6 +88,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ApresentacaoAcessaiRoute: ApresentacaoAcessaiRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
