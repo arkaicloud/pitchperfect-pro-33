@@ -164,7 +164,7 @@ function Slide05({ i, t }: { i: number; t: number }) {
         <Stat value="4.782" label="Check-ins processados" />
         <Stat value="32" label="Períodos gerenciados" />
         <Stat value="17" label="Usuários ativos" />
-        <Stat value="Out/2025" label="Em operação desde" />
+        <Stat value={<span className="text-2xl md:text-3xl">Out/2025</span>} label="Em operação desde" />
         <Stat value="24/7" label="Disponibilidade da plataforma" />
       </div>
       <p className="mt-8 text-white/80 md:text-lg">De Campinas à Europa, o Acessaí acompanha a operação onde ela acontece.</p>
@@ -535,15 +535,14 @@ function Slide20({ i, t }: { i: number; t: number }) {
 function Slide21({ i, t }: { i: number; t: number }) {
   const groups = [
     { title: "Melhorias operacionais", items: ["Controle de coletes e uniformes","Gestão de alimentação","Prestadores de serviço","Lembretes automáticos","Portal do participante"] },
-    { title: "Integrações", items: ["WhatsApp","E-mail","Pagamentos","Hotmart / Eduzz","CRM externo","Marketing","Certificados"] },
-    { title: "Novos modelos comerciais", items: ["White-label","Multi-organização","API pública","Dashboard executivo","Módulos premium"] },
+    { title: "Integrações", items: ["WhatsApp","E-mail","Pagamentos","CRM externo","Marketing","Certificados"] },
   ];
   return (
     <SlideShell index={i} total={t} eyebrow="Evolução contínua" title="Uma plataforma que evolui junto com a operação">
       <div className="mb-4 inline-flex items-center gap-2 self-start rounded-full border border-[color:var(--acessai-purple)]/40 bg-[color:var(--acessai-purple)]/10 px-3 py-1 text-xs tracking-widest text-[color:var(--acessai-purple)] uppercase">
         <Puzzle className="h-3.5 w-3.5" />Roadmap · Possibilidades futuras
       </div>
-      <div className="grid flex-1 gap-4 lg:grid-cols-3">
+      <div className="grid flex-1 gap-4 lg:grid-cols-2">
         {groups.map((g) => (
           <div key={g.title} className="acessai-card p-5">
             <div className="mb-3 font-semibold text-white">{g.title}</div>
@@ -592,28 +591,15 @@ function Slide23({ i, t }: { i: number; t: number }) {
 }
 
 function Slide24({ i, t }: { i: number; t: number }) {
-  const steps = ["Validar necessidades da próxima edição","Definir módulos prioritários","Configurar evento e participantes","Preparar equipe operacional","Realizar validação antes do evento","Acompanhar operação e resultados"];
   return (
     <SlideShell index={i} total={t} eyebrow="Próximos passos" title="Prontos para a próxima edição">
-      <div className="grid flex-1 gap-8 lg:grid-cols-[1.2fr_1fr]">
-        <ol className="space-y-3">
-          {steps.map((s, idx) => (
-            <li key={s} className="flex items-start gap-3">
-              <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-gradient-to-br from-[color:var(--acessai-cyan)] to-[color:var(--acessai-purple)] text-sm font-semibold text-[color:var(--acessai-bg)]">{idx + 1}</span>
-              <span className="pt-1 text-white/90 md:text-lg">{s}</span>
-            </li>
-          ))}
-        </ol>
-        <div className="acessai-card acessai-glow p-6">
-          <div className="text-xl font-semibold text-white md:text-2xl">Vamos transformar cada nova edição em uma operação mais simples, organizada e inteligente.</div>
-          <div className="mt-6 space-y-2 text-sm text-[color:var(--acessai-muted)]">
-            <div>Responsável: __________________________</div>
-            <div>Empresa: ______________________________</div>
-            <div>WhatsApp: _____________________________</div>
-            <div>E-mail: _______________________________</div>
-          </div>
-          <div className="mt-6 flex items-center justify-between text-xs tracking-widest text-white/60 uppercase">
-            <span>Arkai</span><span className="acessai-gradient-text font-semibold">Acessaí</span>
+      <div className="flex flex-1 items-center justify-center">
+        <div className="acessai-card acessai-glow w-full max-w-3xl p-10 text-center md:p-14">
+          <div className="text-2xl font-semibold text-white md:text-4xl">Vamos transformar cada nova edição em uma operação mais simples, organizada e inteligente.</div>
+          <div className="mt-10 flex items-center justify-center gap-3 text-sm tracking-widest text-white/70 uppercase">
+            <span>Arkai</span>
+            <span className="h-1 w-1 rounded-full bg-white/40" />
+            <span className="acessai-gradient-text font-semibold">Acessaí</span>
           </div>
         </div>
       </div>
