@@ -301,28 +301,28 @@ function Slide11({ i, t }: { i: number; t: number }) {
   const steps = ["Dados pessoais","Endereço","Informações financeiras","Dados de saúde","Informações especiais","Consentimento","Assinatura digital"];
   const highlights = ["Progresso salvo","Validação de CPF","Assinatura digital","Aprovação ou reprovação","Bloqueio do check-in quando necessário","Dados sensíveis com criptografia","Rastreabilidade do processo"];
   return (
-    <SlideShell index={i} total={t} eyebrow="Módulo · Onboarding" title="Informações essenciais coletadas antes do evento">
-      <div className="grid flex-1 gap-8 lg:grid-cols-2">
-        <div>
-          <div className="mb-3 text-sm text-[color:var(--acessai-muted)]">7 etapas</div>
-          <ol className="space-y-2">
+    <SlideShell index={i} total={t} eyebrow="Módulo · Onboarding" title="Informações coletadas antes do evento">
+      <div className="grid flex-1 gap-6 lg:grid-cols-2">
+        <div className="min-h-0">
+          <div className="mb-2 text-xs text-[color:var(--acessai-muted)]">7 etapas</div>
+          <ol className="space-y-1.5">
             {steps.map((s, idx) => (
-              <li key={s} className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] p-3">
-                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-[color:var(--acessai-cyan)]/15 text-sm font-semibold text-[color:var(--acessai-cyan)]">{idx + 1}</span>
-                <span className="text-white/90">{s}</span>
+              <li key={s} className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2">
+                <span className="grid h-7 w-7 shrink-0 place-items-center rounded-md bg-[color:var(--acessai-cyan)]/15 text-xs font-semibold text-[color:var(--acessai-cyan)]">{idx + 1}</span>
+                <span className="text-sm text-white/90">{s}</span>
               </li>
             ))}
           </ol>
         </div>
-        <div>
-          <div className="mb-3 text-sm text-[color:var(--acessai-muted)]">Destaques</div>
-          <div className="grid gap-2">
+        <div className="min-h-0">
+          <div className="mb-2 text-xs text-[color:var(--acessai-muted)]">Destaques</div>
+          <div className="grid gap-1.5">
             {highlights.map((h) => (
-              <div key={h} className="flex items-center gap-2 text-white/85"><ShieldCheck className="h-4 w-4 text-[color:var(--acessai-cyan)]" /><span className="text-sm">{h}</span></div>
+              <div key={h} className="flex items-center gap-2 text-white/85"><ShieldCheck className="h-4 w-4 shrink-0 text-[color:var(--acessai-cyan)]" /><span className="text-sm">{h}</span></div>
             ))}
           </div>
-          <p className="mt-6 text-white/80 md:text-lg">Menos papel. Mais segurança, controle e rastreabilidade.</p>
-          <p className="mt-2 text-xs text-[color:var(--acessai-muted)]">Maior rastreabilidade documental e apoio à conformidade da operação.</p>
+          <p className="mt-4 text-white/80 md:text-base">Menos papel. Mais segurança, controle e rastreabilidade.</p>
+          <p className="mt-1 text-xs text-[color:var(--acessai-muted)]">Maior rastreabilidade documental e apoio à conformidade da operação.</p>
         </div>
       </div>
     </SlideShell>
